@@ -17,13 +17,16 @@ export default function useGetData(localidad) {
         );
         setData(resp.data);
         setLoading(false);
+        setError(null);
       } catch (e) {
-        setError(e);
+        setError(
+          "La loaclidad que escribio no existe o no esta en nuestra base de datos"
+        );
       } finally {
         setLoading(false);
       }
     };
-
+    console.error(error);
     fetchClima();
   }, [localidad]);
 
